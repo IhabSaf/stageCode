@@ -1,0 +1,42 @@
+ 
+@@ -119,10 +119,22 @@
+ 		<dependency>
+ 			<groupId>nl.indi.icm</groupId>
+ 			<artifactId>indi-icm-service</artifactId>
+ 			<version>1.0.0</version>
+ 		</dependency>
++		<dependency>
++			<groupId>io.quarkus</groupId>
++			<artifactId>quarkus-jdbc-postgresql</artifactId>
++		</dependency>
++		<dependency>
++			<groupId>io.quarkus</groupId>
++			<artifactId>quarkus-jdbc-oracle</artifactId>
++		</dependency>
++		<dependency>
++			<groupId>io.quarkus</groupId>
++			<artifactId>quarkus-agroal</artifactId>
++		</dependency>
+ 		<dependency>
+ 			<groupId>nl.indi.indi-iom-resources</groupId>
+ 			<artifactId>indi-iom-resources</artifactId>
+ 			<version>3.0.0</version>
+ 		</dependency>
+@@ -212,15 +224,11 @@
+ 		<dependency>
+ 			<groupId>nl.indi.database.order</groupId>
+ 			<artifactId>Database_Order</artifactId>
+ 			<version>9.3.0.1-SNAPSHOT</version>
+ 		</dependency>
+-		<dependency>
+-			<groupId>nl.indi.invoice</groupId>
+-			<artifactId>invoice-service</artifactId>
+-			<version>1.0.0</version>
+-		</dependency>
++
+ 	</dependencies>
+ 	<build>
+ 		<plugins>
+         <plugin>
+             <groupId>org.apache.maven.plugins</groupId>
+
