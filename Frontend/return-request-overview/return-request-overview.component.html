@@ -1,0 +1,91 @@
+<div *ngIf="apiReturnRequests">
+  <h1>Retouraanvraag</h1>
+  <h3 *ngIf="!loading; else returnRequestsFound">
+    Geen retouraanvraag gevonden
+  </h3>
+</div>
+<div class="container">
+  <ng-template #returnRequestsFound>
+    <h3>
+      {{ apiReturnRequests.apiReturnRequests.length }} Return Requests gevonden
+    </h3>
+  </ng-template>
+  <table class="outer-table">
+    <thead>
+      <tr>
+        <th class="black-title">RetourNummer</th>
+        <th class="black-title">Datum</th>
+        <th class="black-title">E-mailadres</th>
+        <th class="black-title">Opmerking</th>
+        <th class="black-title">Status</th>
+        <th class="arrow-column"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let request of apiReturnRequests.apiReturnRequests">
+        <tr (click)="toggleDetails(request.rmaItems)" [class.active]="selectedRequest === request.rmaItems" class="hover-effect">
+          <td class="restOf-text">{{ request.rmaNum }}</td>
+          <th class="date-front">{{request.returnRequestDate  | date : 'dd/MM/yyyy' }}</th>
+          <td class="restOf-text">{{ request.emailAddress }}</td>
+          <td class="comment-cell">{{ request.comment }}</td>
+          <td>{{ request.status }}</td>
+          <td>
+            <div class="circle-container">
+              <div class="circle" [class.open]="selectedRequest === request.rmaItems">
+                <i class='fas fa-chevron-down'></i>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr *ngIf="selectedRequest === request.rmaItems">
+          <td colspan="6">
+            <table class="inner-table">
+              <thead>
+                <tr>
+                  <th class="black-title">Artikel&nbsp;Naam</th>
+                  <th class="black-title">OrderNummer</th>
+                  <th class="black-title">Aantal</th>
+                  <th class="black-title">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of request.rmaItems">
+                  <td>
+                    <span class="article-with-icon">
+                      <img [src]="item.imageURL" alt="Tool Icon" class="tool-icon">
+                      <span class="article-name small-font">{{ item.articleName }}</span>
+                    </span><br>
+                    <span class="item-details">
+                      Artikelnummer: {{ item.sku }}<br>
+                      Position: {{ item.position }}</span>
+                  </td>
+                  <td class="order-Number">{{ request.orderNumber }}</td>
+                  <td class="item-details">
+                    <span class="item-quantity">{{ item.quantity }}</span>&nbsp;
+                    <span class="item-unit">EA</span>
+                  </td>
+                  <td>{{ request.status }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+  <div class="scroll-to-top" [ngClass]="{'show-scrollTop': windowScrolledDown}">
+    <button
+      type="button"
+      class="c-btn c-btn--lg c-btn--background pt-4 pb-2"
+      data-toggle="button"
+      aria-pressed="true"
+      (click)="scrollToTop()"
+    >
+      <div class="d-flex flex-column c-btn__content">
+        <i class="fas fa-chevron-up fa-xl"></i>
+        <span>naar boven</span>
+      </div>
+    </button>
+  </div>
+</div>
+
