@@ -1,0 +1,143 @@
+
+$brand-primary: #FF4E00;
+$color-white: #FFFFFF;
+$color-grey-lighter: #FBFBFB;
+$color-grey-border: #E0E0E0;
+$color-grey-light: #F6F6F6;
+$color-grey-normal: #f0efef;
+$color-orange: #FF4E00;
+.container {
+  max-width: 100%;
+  background-color: $color-white;
+  border: 1px solid $color-grey-border;
+  position: relative;
+
+
+  h2 {
+    color: #454F51;
+    text-align: center;
+  }
+
+  .outer-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th, td {
+      padding: 25px;
+      border-bottom: 1px solid $color-grey-border;
+      th {
+        background-color: transparent;
+        color: #000000e8;
+      }
+    }
+
+    tr:hover {
+      .circle {
+        background-color: $color-orange;
+        i {
+          color: $color-white; 
+        }
+      }
+    }
+  }
+
+  .article-name {
+    font-weight: bold;
+    color: $color-orange;
+    cursor: pointer;
+    font-size: inherit; 
+  }
+
+  .order-Number {
+    font-weight: lighter;
+    color: $color-orange;
+    cursor: pointer;
+    font-size: 90%; 
+  }
+
+  .restOf-text {
+    font-weight: lighter;
+    cursor: pointer;
+    font-size: 90%; 
+  }
+
+  .date-front {
+    font-weight: lighter;
+    color: $color-orange;
+    cursor: pointer;
+    font-size: 90%; 
+    position: relative;
+  }
+
+  .comment-cell {
+    max-width: 200px;
+    font-weight: lighter;
+    cursor: pointer;
+    font-size: 90%; 
+    white-space: pre-line; 
+  }
+
+  .small-font {
+    font-size: 90%; 
+  }
+
+  .item-details {
+    color: #555; 
+    font-size: 80%; 
+
+  }
+
+  .article-with-icon {
+    display: flex;
+    align-items: center;
+
+    .tool-icon {
+      width: 50px; 
+      height: 50px; 
+      margin-right: 5px;
+    }
+  }
+
+  .circle-container {
+    position: absolute;
+    right: 1%; 
+    padding-left: 10px; 
+    border-left: 1px solid $color-grey-border;
+    
+    .circle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      i {
+        font-size: 18px;
+        color: #808080;
+        transition: color 0.3s;
+      }
+
+      &.open i {
+        transform: rotate(-135deg);
+      }
+    }
+  }
+.scroll-to-top {
+  position: fixed;
+  bottom: 5%;
+  right: 3%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease-in-out;
+  z-index: 10;
+}
+
+.show-scrollTop {
+  opacity: 1;
+  pointer-events: all;
+  transition: all 0.2s ease-in-out;
+}
+}
